@@ -3,7 +3,6 @@ import random
 def password_generator(number_characters):
         str_forward=""
         str_backward=""
-        character=""
         for forward in range(1,number_characters+1):
             str_forward+=str(forward)
         for backward in range(1,number_characters+1):
