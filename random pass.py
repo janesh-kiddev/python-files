@@ -1,8 +1,8 @@
 import random
 
 def password_generator(number_characters):
-    si="asfss"
-    sj="ards"
+    si=""
+    sj=""
     for i in range(1,number_characters+1):
         si+=str(i)
     for j in range(1,number_characters+1):
