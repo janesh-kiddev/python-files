@@ -1,2 +1,2 @@
 # python-files
-Just a guywho is obssesed with python....👍
+Just a guy who is obsessed with python....👍
