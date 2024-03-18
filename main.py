@@ -1,35 +1,22 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
-import sys
+import openai
 
-name = input("Enter:")
+openai.api_key = "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"
 
-service = Service(executable_path="chromedriver.exe")
-driver = webdriver.Chrome(service=service)
 
-driver.get("https://google.com")
+def chat_bot(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{'role': 'user', "content": prompt}]
+    )
 
-WebDriverWait(driver, 5).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "gLFyf"))
-)
+    return response.choices[0].message.content.strip()
 
-input_element = driver.find_element(By.CLASS_NAME, "gLFyf")
-input_element.clear()
-input_element.send_keys(f"{name}" + Keys.ENTER)
 
-WebDriverWait(driver, 5).until(
-    EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, f"{name.title()}"))
-)
+if __name__ == "__main__":
+    while True:
+        user = input("YOU:")
+        if user.lower() in ['exit', 'quit', 'bye']:
+            break
 
-link = driver.find_element(By.PARTIAL_LINK_TEXT, f"{name.title()}")
-link.click()
-
-time.sleep(60)
-
-driver.quit()
-sys.exit()
+        response = chat_bot(user)
+        print('Chatbot:', response)
