@@ -15,7 +15,7 @@ def chat_bot(prompt):
 if __name__ == "__main__":
     while True:
         user = input("YOU:")
-        if user.lower() in ['exit', 'quit', 'bye']:
+        if user.lower() in ['exit', 'quit', 'bye','close','kill']:
             break
 
         response = chat_bot(user)
