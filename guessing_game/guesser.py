@@ -1,6 +1,6 @@
 import random
 print("#####Guesses#####".center(100))
-
+print("This is a game where the task is find the number within 10 tries".title())
 real_number = random.randint(0,100)
 tries = 10
 c = 0
